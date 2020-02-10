@@ -1,7 +1,7 @@
 Musat Mihai-Robert 
 Grupa 323 CB
 
-=================================================Tema 1 IOCLA - Postfix=================================================
+=================================================Tema 1 IOCLA - Postfix======================================================
 
 	Pentru implementarea temei am folosit mai multe label-uri in cadrul functiei main care imi permit sa obtin rezultatul
 corect al expresiei aritmetice.In primul rand, am folosit label-ul verificare_final prin care verific daca am ajuns la 
