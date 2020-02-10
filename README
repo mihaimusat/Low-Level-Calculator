@@ -1,0 +1,27 @@
+Musat Mihai-Robert 
+Grupa 323 CB
+
+=================================================Tema 1 IOCLA - Postfix=================================================
+
+	Pentru implementarea temei am folosit mai multe label-uri in cadrul functiei main care imi permit sa obtin rezultatul
+corect al expresiei aritmetice.In primul rand, am folosit label-ul verificare_final prin care verific daca am ajuns la 
+terminatorul de sir al vectorului de octeti expr prin care parsez expresia aritmetica.Daca am ajuns la final, sar la label-ul 
+afisare pentru afisarea rezultatului retinut in registrul eax.Apoi, am implementat label-ul aplica_operatie prin care, in 
+functie de ce am citit la momentul curent, fac salt la diferite puncte in program.Daca citesc operatori aritmetici(+, -, *, /) 
+sar la label-urile corespunzatoare(adunare, verificare_minus, inmultire, impartire) pentru a obtine rezultatul subexpresiei, 
+daca citesc spatiu, sar la verificare_spatiu, iar daca nu sunt in niciunul din aceste cazuri, inseamna ca sigur trebuie sa 
+sar la label-ul afla_numar pentru a obtine numarul citit.Daca la pozitia curenta am citit minus, nu sar direct la aplicarea
+operatiei de scadere dintre doi registri, ci la label-ul verificare_minus deoarece trebuie sa lucrez si cu numere 
+negative.Daca nu am dupa semnul minus, spatiu sau terminator de sir, inseamna sigur ca am pe urmatoarea pozitie cifra 
+si setez edi = 1, pentru a marca faptul ca am un numar negativ.Label-ul verificare_spatiu contribuie la aflarea raspunsului 
+la intrebarea daca am de citit un numar negativ sau nu prin verificarea caracterului de la pozitia anterioara daca a fost 
+operator aritmetic pentru ca vreau sa ajung in pozitia curenta pe spatiu.Daca edi = 1 pe care l-am setat in label-ul 
+verificare_spatiu, inseamna ca trebuie sa neg numarul si sar la label-ul negare_numar.
+	Acum, avand toti operatorii aritmetici bine definiti, nu imi ramane decat sa parsez numerele din cadrul expresiei.
+Pentru aceasta m-am folosit, in principal, de label-ul afla_numar prin care mai intai convertesc cifra din caracter
+in numar, retin in esi cifra curenta a numarului, verific daca am spatiu dupa cifra.Daca mai am spatiu, inseamna ca
+mai am de citit cifre din numar, si sar la label-ul auxiliar prelucrare_cifra prin care inmultesc cifra curenta cu 10 
+recursiv pana cand dau de spatiu pentru a obtine numarul final.De asemenea, label-urile pentru operatiile aritmetice 
+propriu-zise la care fac salt din cadrul label-ului aplica_operatie(adunare, scadere, inmultire, impartire) nu fac altceva 
+decat sa obtina rezultatul subexpresiei prin luarea a doi operanzi de pe stiva, aplicarea operatiei(add, sub, imul, idiv) 
+si punerea rezultatului inapoi pe stiva.
